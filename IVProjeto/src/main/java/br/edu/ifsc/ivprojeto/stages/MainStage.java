@@ -20,6 +20,7 @@ public class MainStage {
 
 	public Button btnGPS;
 	public Button btnCAM;
+	public Button btnLIG;
 
 	public MainStage(Stage stage) throws Exception {
 
@@ -49,6 +50,14 @@ public class MainStage {
 		btnCAM = new Button(Strings.btnCAM);
 		btnCAM.setLayoutX(50);
 		btnCAM.setLayoutY(450);
+		btnCAM.setPrefSize(200, 100);
+
+		pane.getChildren().add(btnCAM);
+
+		// Ligar button
+		btnCAM = new Button(Strings.btnLIG);
+		btnCAM.setLayoutX(350);
+		btnCAM.setLayoutY(50);
 		btnCAM.setPrefSize(200, 100);
 
 		pane.getChildren().add(btnCAM);
