@@ -139,7 +139,7 @@ public class MainStage {
 
 		// /////////////////////////
 
-		
+		/*
 		stage.setTitle("Button Sample");
 		stage.setWidth(300);
 		stage.setHeight(190);
@@ -157,7 +157,7 @@ public class MainStage {
 		vbox.getChildren().add(btnGPS);
         vbox.setSpacing(10);
         scene.getRoot();
-        pane.getChildren().add(btnGPS1);
+        pane.getChildren().add(btnGPS1);*/
 		
 
 		stage.setTitle(Strings.appTitle);
