@@ -1,11 +1,22 @@
 package br.edu.ifsc.ivprojeto.stages;
 
 import java.io.FileInputStream;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -15,7 +26,11 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import br.edu.ifsc.ivprojeto.util.Strings;
 
 public class MainStage {
@@ -32,6 +47,9 @@ public class MainStage {
 	public Button btnBt;
 	public Button btnAUX;
 	public Button btnGPS1;
+	public Label dataMainStage;
+	public Label relogioMainStage;
+	
 
 	public MainStage(Stage stage) throws Exception {
 
@@ -54,6 +72,16 @@ public class MainStage {
 		btnGPS.setLayoutX(50);
 		btnGPS.setLayoutY(350);
 		btnGPS.setPrefSize(200, 100);
+
+			btnGPS.setOnMouseClicked(e -> {
+				try {
+					new GPS(new Stage());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				stage.close();
+			});
 
 		pane.getChildren().add(btnGPS);
 
@@ -137,29 +165,39 @@ public class MainStage {
 
 		pane.getChildren().add(btnAUX);
 
-		// /////////////////////////
+		Date hoje = new Date();
+		SimpleDateFormat tipoDate;
+		tipoDate = new SimpleDateFormat("dd/MM/yyyy");
+		Label data = new Label(tipoDate.format(hoje));
+		Font font = Font.font("Arial", FontWeight.EXTRA_BOLD, 40);
+		data.setTextFill(Color.web("#0076a3"));
+		data.setEffect(new DropShadow(10, Color.RED));
+		data.setFont(font);
+		dataMainStage = data;
+		dataMainStage.setLayoutX(50);
+		dataMainStage.setLayoutY(200);
 
-		/*
-		stage.setTitle("Button Sample");
-		stage.setWidth(300);
-		stage.setHeight(190);
+		pane.getChildren().add(dataMainStage);
 
-		VBox vbox = new VBox();
-		vbox.setLayoutX(20);
-		vbox.setLayoutY(20);
+		Label lblRelogio = new Label();
+		relogioMainStage = lblRelogio;
+		SimpleDateFormat formatador = new SimpleDateFormat("hh:mm:ss a");
+		Font fonte = Font.font("Arial", FontWeight.EXTRA_BOLD, 40);
+		lblRelogio.setTextFill(Color.web("#0076a3"));
+		lblRelogio.setFont(fonte);
+		lblRelogio.setEffect(new DropShadow(10, Color.RED));
+		Date agora = new Date();
+		lblRelogio.setText(formatador.format(agora)); 
+		KeyFrame frame = new KeyFrame(Duration.millis(1000));
+		Timeline timeline = new Timeline(frame);
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		timeline.play();
+		relogioMainStage.setLayoutX(50);
+		relogioMainStage.setLayoutY(250);
 
-		Image image1 = new Image(getClass().getResourceAsStream(
-				"C:\\Users\\Fernando\\Documents\\GitHub\\IVProjeto\\IVProjeto\\src\\main\\java\\br\\edu\\ifsc\\ivprojeto\\stages\\gps.png"));
-		btnGPS1 = new Button("Accept");
-		btnGPS1.setGraphic(new ImageView(image1));
-		//
-		
-		vbox.getChildren().add(btnGPS);
-        vbox.setSpacing(10);
-        scene.getRoot();
-        pane.getChildren().add(btnGPS1);*/
-		
+		pane.getChildren().add(relogioMainStage);
 
+	
 		stage.setTitle(Strings.appTitle);
 		stage.setResizable(false);
 		stage.show();

@@ -14,4 +14,5 @@ public class Strings {
 	public static final String btnUSB = "USB";
 	public static final String btnBt = "Bluetooth";
 	public static final String btnAUX = "AUX";
+	public static final String btnMainStage = "Home";
 }

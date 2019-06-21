@@ -1,9 +1,16 @@
+
 package br.edu.ifsc.ivprojeto.stages;
 
+//import com.sun.javafx.application.LauncherImpl;
 import java.io.FileInputStream;
+import java.io.IOException;
 
 import br.edu.ifsc.ivprojeto.util.Strings;
+//import br.edu.ifsc.ui.stages.AddUserStage;
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
@@ -13,11 +20,13 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.stage.Stage;
 
+public class GPS extends Application {
+	
+	public Button btnMainStage;
 
-
-public class GPS {
-
-	public GPS(Stage stage) throws Exception {
+	public GPS(Stage stage) throws Exception{
+		// TODO Auto-generated constructor stub
+	
 
 		// creating the classes hierarchy (pane -> scene -> stage)
 		AnchorPane pane = new AnchorPane();
@@ -35,8 +44,42 @@ public class GPS {
 
 		stage.setTitle(Strings.appTitle);
 		stage.setResizable(false);
-		stage.show();
+		
+		btnMainStage = new Button(Strings.btnMainStage);
+		btnMainStage.setLayoutX(50);
+		btnMainStage.setLayoutY(550);
+		btnMainStage.setPrefSize(50, 50);
+		
+		btnMainStage.setOnMouseClicked(e -> {
+			try {
+				new MainStage(new Stage());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			stage.close();
 
+			//new AddUserStage(new Stage());
+
+		});
+		
+		pane.getChildren().add(btnMainStage);
+		
+		
+		stage.show();
+		
+	}
+
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		
+		
 	}
 	
+	public static void fecha() {
+	//	GPS.stage.close();
+	}
+
+
 }
