@@ -90,6 +90,16 @@ public class MainStage {
 		btnCAM.setLayoutX(50);
 		btnCAM.setLayoutY(500);
 		btnCAM.setPrefSize(200, 100);
+		
+		btnCAM.setOnMouseClicked(e -> {
+			try {
+				new Camera(new Stage());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			stage.close();
+		});
 
 		pane.getChildren().add(btnCAM);
 
@@ -98,6 +108,16 @@ public class MainStage {
 		btnLIG.setLayoutX(350);
 		btnLIG.setLayoutY(200);
 		btnLIG.setPrefSize(200, 100);
+		
+		btnLIG.setOnMouseClicked(e -> {
+			try {
+				new Ligar(new Stage());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			stage.close();
+		});
 
 		pane.getChildren().add(btnLIG);
 
@@ -107,6 +127,16 @@ public class MainStage {
 		btnAPP.setLayoutY(350);
 		btnAPP.setPrefSize(200, 100);
 
+		btnAPP.setOnMouseClicked(e -> {
+			try {
+				new Aplicativos(new Stage());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			stage.close();
+		});
+		
 		pane.getChildren().add(btnAPP);
 
 		// Pref button
@@ -114,6 +144,16 @@ public class MainStage {
 		btnPREF.setLayoutX(350);
 		btnPREF.setLayoutY(500);
 		btnPREF.setPrefSize(200, 100);
+		
+		btnPREF.setOnMouseClicked(e -> {
+			try {
+				new Configuracoes(new Stage());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			stage.close();
+		});
 
 		pane.getChildren().add(btnPREF);
 
@@ -122,6 +162,16 @@ public class MainStage {
 		btnRAD.setLayoutX(650);
 		btnRAD.setLayoutY(60);
 		btnRAD.setPrefSize(200, 100);
+		
+		btnRAD.setOnMouseClicked(e -> {
+			try {
+				new Radio(new Stage());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			stage.close();
+		});
 
 		pane.getChildren().add(btnRAD);
 
@@ -130,6 +180,16 @@ public class MainStage {
 		btnTV.setLayoutX(650);
 		btnTV.setLayoutY(200);
 		btnTV.setPrefSize(100, 100);
+		
+		btnTV.setOnMouseClicked(e -> {
+			try {
+				new TV(new Stage());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			stage.close();
+		});
 
 		pane.getChildren().add(btnTV);
 
@@ -139,6 +199,16 @@ public class MainStage {
 		btnDVD.setLayoutY(200);
 		btnDVD.setPrefSize(100, 100);
 
+		btnDVD.setOnMouseClicked(e -> {
+			try {
+				new DVD(new Stage());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			stage.close();
+		});
+		
 		pane.getChildren().add(btnDVD);
 
 		// USB button
@@ -146,6 +216,16 @@ public class MainStage {
 		btnUSB.setLayoutX(650);
 		btnUSB.setLayoutY(350);
 		btnUSB.setPrefSize(200, 100);
+		
+		btnUSB.setOnMouseClicked(e -> {
+			try {
+				new USB(new Stage());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			stage.close();
+		});
 
 		pane.getChildren().add(btnUSB);
 
@@ -154,6 +234,16 @@ public class MainStage {
 		btnBt.setLayoutX(650);
 		btnBt.setLayoutY(500);
 		btnBt.setPrefSize(100, 100);
+		
+		btnBt.setOnMouseClicked(e -> {
+			try {
+				new Bluetooth(new Stage());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			stage.close();
+		});
 
 		pane.getChildren().add(btnBt);
 
@@ -162,6 +252,16 @@ public class MainStage {
 		btnAUX.setLayoutX(750);
 		btnAUX.setLayoutY(500);
 		btnAUX.setPrefSize(100, 100);
+		
+		btnAUX.setOnMouseClicked(e -> {
+			try {
+				new Auxiliar(new Stage());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			stage.close();
+		});
 
 		pane.getChildren().add(btnAUX);
 
