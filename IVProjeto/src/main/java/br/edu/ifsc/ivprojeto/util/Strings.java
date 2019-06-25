@@ -15,4 +15,8 @@ public class Strings {
 	public static final String btnBt = "Bluetooth";
 	public static final String btnAUX = "AUX";
 	public static final String btnMainStage = "Home";
+	public static final String tableTitle = "Contatos Salvos";
+	public static final String firstNameTitle = "Nome";
+	public static final String lastNameTitle = "Sobrenome";
+	public static final String numberTitle = "Número";
 }
