@@ -24,8 +24,9 @@ public class ContactsList implements ContactsDBInterface {
 	public ObservableList<Contact> getContact() {
 		if (contacts == null) {
 			contacts = FXCollections.observableArrayList(new ArrayList<Contact>());
-			contacts.add(new Contact("admin", "admin", "651561651"));
-			contacts.add(new Contact("admin1", "admin1", "65423534"));
+			contacts.add(new Contact("Fernando", "Nowak", "(42) 998057519"));
+			contacts.add(new Contact("Augusto", "Silva", "(51) 985641235"));
+			contacts.add(new Contact("José", "Santos", "(47) 999451236"));
 		}
 		return contacts;
 	}
