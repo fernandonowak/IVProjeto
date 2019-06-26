@@ -2,6 +2,8 @@ package br.edu.ifsc.ivprojeto.stages;
 
 import java.io.FileInputStream;
 
+import br.edu.ifsc.ivprojeto.util.DB;
+import br.edu.ifsc.ivprojeto.entities.Contact;
 import br.edu.ifsc.ivprojeto.util.Strings;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -10,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
@@ -18,17 +22,14 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class Ligar extends Application {
 
 	public Button btnMainStage;
-	public TableView table;
 	public Label label1;
-	public TableColumn firstNameCol;
-	public TableColumn lastNameCol;
-	public TableColumn numberCol;
 	public VBox vbox;
 
 	public Ligar(Stage stage) throws Exception {
@@ -71,32 +72,45 @@ public class Ligar extends Application {
 
 		pane.getChildren().add(btnMainStage);
 
-		////////////// criando tabela de contatos//////
+		////////////// create contacts table////////
 
-		table = new TableView();
+		TableView<Contact> table = new TableView<Contact>();
 		table.setPrefSize(600, 550);
+		table.setEditable(true);
 
 		label1 = new Label(Strings.tableTitle);
 		label1.setFont(new Font("Arial", 20));
+		label1.setTextFill(Color.web("#0076a3"));
 
-		table.setEditable(true);
+		TableColumn<Contact, String> firstNameCol = new TableColumn<>(Strings.firstNameTitle);
+		TableColumn<Contact, String> lastNameCol = new TableColumn<>(Strings.lastNameTitle);
+		TableColumn<Contact, String> numberCol = new TableColumn<>(Strings.numberTitle);
 
-		firstNameCol = new TableColumn(Strings.firstNameTitle);
 		firstNameCol.setPrefWidth(200);
-		lastNameCol = new TableColumn(Strings.lastNameTitle);
-		lastNameCol.setPrefWidth(200);
-		numberCol = new TableColumn(Strings.numberTitle);
-		numberCol.setPrefWidth(200);
+		firstNameCol.setCellValueFactory(new PropertyValueFactory<Contact, String>("firstName"));
+		firstNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+		table.getColumns().add(firstNameCol);
 
-		table.getColumns().addAll(firstNameCol, lastNameCol, numberCol);
+		lastNameCol.setPrefWidth(200);
+		lastNameCol.setCellValueFactory(new PropertyValueFactory<Contact, String>("lastName"));
+		lastNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+		table.getColumns().add(lastNameCol);
+
+		numberCol.setPrefWidth(200);
+		numberCol.setCellValueFactory(new PropertyValueFactory<Contact, String>("number"));
+		numberCol.setCellFactory(TextFieldTableCell.forTableColumn());
+		table.getColumns().add(numberCol);
+
 
 		vbox = new VBox();
 		vbox.setSpacing(5);
 		vbox.setPadding(new Insets(10, 0, 0, 10));
-		
+
 		vbox.getChildren().addAll(label1, table);
 
 		pane.getChildren().addAll(vbox);
+		
+		table.setItems(DB.contacts.getContact());
 
 		stage.setScene(scene);
 
