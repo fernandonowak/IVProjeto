@@ -24,4 +24,7 @@ public class Strings {
 	public static final String newContactLastName = "Sobrenome";
 	public static final String newContactNumber = "Número";
 	public static final String btnAdd = "Adicionar";
+	public static final String btnDel = "Apagar Contato";
+	public static final String btnCancel = "Cancelar";
+	public static final String txtFieldError = "Campo vazio";
 }
