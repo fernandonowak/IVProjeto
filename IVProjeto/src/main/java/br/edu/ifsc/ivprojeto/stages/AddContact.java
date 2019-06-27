@@ -57,13 +57,16 @@ public class AddContact {
 		btnAdd.setPrefSize(150, 20);
 
 		btnAdd.setOnMouseClicked(e -> {
-			if(txtContactName.getText() == null || txtContactLastName.getText() == null || txtContactNumber.getText() == null) {
+			if(txtContactName.getText() == null || txtContactLastName.getText()== null ||
+			txtContactNumber.getText() == null) {
+				
 				txtFieldError();
 			}else {
 				DB.contacts.addContact(txtContactName.getText(), txtContactLastName.getText(),
 						txtContactNumber.getText());
 				stage.close();
 			}
+			
 		});
 
 		pane.getChildren().add(btnAdd);
