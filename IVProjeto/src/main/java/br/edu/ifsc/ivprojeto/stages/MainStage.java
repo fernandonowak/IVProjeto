@@ -5,9 +5,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -39,7 +43,8 @@ public class MainStage {
 	public Button btnGPS1;
 	public Label dataMainStage;
 	public Label relogioMainStage;
-	
+	public ProgressBar pb;
+	public Label tf;
 
 	public MainStage(Stage stage) throws Exception {
 
@@ -57,21 +62,50 @@ public class MainStage {
 
 		stage.setScene(scene);
 
+		// Barra Progressiva
+		pb = new ProgressBar();
+		pb.setLayoutX(10);
+		pb.setLayoutY(10);
+		pb.setPrefSize(300, 90);
+		pb.setOpacity(0.50);
+
+		EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				double ii = 0.1;
+				pb.setProgress(ii);
+
+			}
+
+		};
+
+		pane.getChildren().add(pb);
+
+		tf = new Label(Strings.txtFieldMain);
+		tf.setLayoutX(50);
+		tf.setLayoutY(8);
+		tf.setPrefSize(200, 100);
+		Font font1 = Font.font("Arial", FontWeight.EXTRA_BOLD, 30);
+		tf.setTextFill(Color.web("#0076a3"));
+		tf.setEffect(new DropShadow(10, Color.RED));
+		tf.setFont(font1);
+
+		pane.getChildren().add(tf);
+
 		// GPS button
 		btnGPS = new Button(Strings.btnGPS);
 		btnGPS.setLayoutX(50);
 		btnGPS.setLayoutY(350);
 		btnGPS.setPrefSize(200, 100);
 
-			btnGPS.setOnMouseClicked(e -> {
-				try {
-					new GPS(new Stage());
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				stage.close();
-			});
+		btnGPS.setOnMouseClicked(e -> {
+			try {
+				new GPS(new Stage());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			stage.close();
+		});
 
 		pane.getChildren().add(btnGPS);
 
@@ -80,7 +114,7 @@ public class MainStage {
 		btnCAM.setLayoutX(50);
 		btnCAM.setLayoutY(500);
 		btnCAM.setPrefSize(200, 100);
-		
+
 		btnCAM.setOnMouseClicked(e -> {
 			try {
 				new Camera(new Stage());
@@ -98,7 +132,7 @@ public class MainStage {
 		btnLIG.setLayoutX(350);
 		btnLIG.setLayoutY(200);
 		btnLIG.setPrefSize(200, 100);
-		
+
 		btnLIG.setOnMouseClicked(e -> {
 			try {
 				new Ligar(new Stage());
@@ -126,7 +160,7 @@ public class MainStage {
 			}
 			stage.close();
 		});
-		
+
 		pane.getChildren().add(btnAPP);
 
 		// Pref button
@@ -134,7 +168,7 @@ public class MainStage {
 		btnPREF.setLayoutX(350);
 		btnPREF.setLayoutY(500);
 		btnPREF.setPrefSize(200, 100);
-		
+
 		btnPREF.setOnMouseClicked(e -> {
 			try {
 				new Configuracoes(new Stage());
@@ -152,7 +186,7 @@ public class MainStage {
 		btnRAD.setLayoutX(650);
 		btnRAD.setLayoutY(60);
 		btnRAD.setPrefSize(200, 100);
-		
+
 		btnRAD.setOnMouseClicked(e -> {
 			try {
 				new Radio(new Stage());
@@ -170,7 +204,7 @@ public class MainStage {
 		btnTV.setLayoutX(650);
 		btnTV.setLayoutY(200);
 		btnTV.setPrefSize(100, 100);
-		
+
 		btnTV.setOnMouseClicked(e -> {
 			try {
 				new TV(new Stage());
@@ -198,7 +232,7 @@ public class MainStage {
 			}
 			stage.close();
 		});
-		
+
 		pane.getChildren().add(btnDVD);
 
 		// USB button
@@ -206,7 +240,7 @@ public class MainStage {
 		btnUSB.setLayoutX(650);
 		btnUSB.setLayoutY(350);
 		btnUSB.setPrefSize(200, 100);
-		
+
 		btnUSB.setOnMouseClicked(e -> {
 			try {
 				new USB(new Stage());
@@ -224,7 +258,7 @@ public class MainStage {
 		btnBt.setLayoutX(650);
 		btnBt.setLayoutY(500);
 		btnBt.setPrefSize(100, 100);
-		
+
 		btnBt.setOnMouseClicked(e -> {
 			try {
 				new Bluetooth(new Stage());
@@ -242,7 +276,7 @@ public class MainStage {
 		btnAUX.setLayoutX(750);
 		btnAUX.setLayoutY(500);
 		btnAUX.setPrefSize(100, 100);
-		
+
 		btnAUX.setOnMouseClicked(e -> {
 			try {
 				new Auxiliar(new Stage());
@@ -277,7 +311,7 @@ public class MainStage {
 		lblRelogio.setFont(fonte);
 		lblRelogio.setEffect(new DropShadow(10, Color.RED));
 		Date agora = new Date();
-		lblRelogio.setText(formatador.format(agora)); 
+		lblRelogio.setText(formatador.format(agora));
 		KeyFrame frame = new KeyFrame(Duration.millis(1000));
 		Timeline timeline = new Timeline(frame);
 		timeline.setCycleCount(Timeline.INDEFINITE);
@@ -287,7 +321,6 @@ public class MainStage {
 
 		pane.getChildren().add(relogioMainStage);
 
-	
 		stage.setTitle(Strings.appTitle);
 		stage.setResizable(false);
 		stage.show();
