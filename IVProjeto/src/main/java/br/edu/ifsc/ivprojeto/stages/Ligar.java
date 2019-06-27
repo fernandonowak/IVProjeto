@@ -1,11 +1,13 @@
 package br.edu.ifsc.ivprojeto.stages;
 
 import java.io.FileInputStream;
+import java.util.ArrayList;
 
 import br.edu.ifsc.ivprojeto.util.DB;
 import br.edu.ifsc.ivprojeto.entities.Contact;
 import br.edu.ifsc.ivprojeto.util.Strings;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -30,6 +32,7 @@ public class Ligar extends Application {
 
 	public Button btnMainStage;
 	public Button btnAddContact;
+	public Button btnDel;
 	public Label label1;
 	public VBox vbox;
 
@@ -87,6 +90,8 @@ public class Ligar extends Application {
 
 		
 		pane.getChildren().add(btnAddContact);
+		
+		
 
 		////////////// create contacts table////////
 
@@ -131,6 +136,16 @@ public class Ligar extends Application {
 		stage.setScene(scene);
 
 		stage.show();
+		
+		btnDel = new Button(Strings.btnDel);
+		btnDel.setLayoutX(620);
+		btnDel.setLayoutY(120);
+		btnDel.setPrefSize(300, 50);
+		
+		btnDel.setOnMouseClicked(e -> {	
+			table.getItems().removeAll(table.getSelectionModel().getSelectedItem());
+		});
+		pane.getChildren().add(btnDel);
 
 	}
 
