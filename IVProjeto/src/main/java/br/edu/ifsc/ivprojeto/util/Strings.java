@@ -19,4 +19,9 @@ public class Strings {
 	public static final String firstNameTitle = "Nome";
 	public static final String lastNameTitle = "Sobrenome";
 	public static final String numberTitle = "Número";
+	public static final String btnAddContact = "Novo Contato";
+	public static final String newContactName = "Nome";
+	public static final String newContactLastName = "Sobrenome";
+	public static final String newContactNumber = "Número";
+	public static final String btnAdd = "Adicionar";
 }
