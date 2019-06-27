@@ -29,6 +29,7 @@ import javafx.stage.Stage;
 public class Ligar extends Application {
 
 	public Button btnMainStage;
+	public Button btnAddContact;
 	public Label label1;
 	public VBox vbox;
 
@@ -53,8 +54,8 @@ public class Ligar extends Application {
 		stage.setResizable(false);
 
 		btnMainStage = new Button(Strings.btnMainStage);
-		btnMainStage.setLayoutX(50);
-		btnMainStage.setLayoutY(550);
+		btnMainStage.setLayoutX(850);
+		btnMainStage.setLayoutY(600);
 		btnMainStage.setPrefSize(50, 50);
 
 		btnMainStage.setOnMouseClicked(e -> {
@@ -66,11 +67,26 @@ public class Ligar extends Application {
 			}
 			stage.close();
 
-			// new AddUserStage(new Stage());
-
 		});
 
 		pane.getChildren().add(btnMainStage);
+		
+		btnAddContact = new Button(Strings.btnAddContact);
+		btnAddContact.setLayoutX(620);
+		btnAddContact.setLayoutY(40);
+		btnAddContact.setPrefSize(300, 50);
+		
+		btnAddContact.setOnMouseClicked(e -> {
+			try {
+				new AddContact(new Stage());
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+
+		});
+
+		
+		pane.getChildren().add(btnAddContact);
 
 		////////////// create contacts table////////
 
